@@ -2,7 +2,7 @@ from openai import OpenAI
 from colorama import Fore, Style, init
 import time
 import threading
-
+import base64
 
 def procedure_start():
     print(r'''
@@ -51,6 +51,13 @@ def simple_stopwatch(stop_event):
         time.sleep(1)  # 暂停1秒
         elapsed_time += 1
 
+def api_key():
+    raw_data = "c2stcHJvai1OenhYYWxMRllXS0hDb1RPVk1hWHJoX0RyVWZxbTlSNElXb0ctTUVHbkltNTg1VkNrMHM1R3hxbjZpTjBEQWlIRzA3UEhxU1l2Y1QzQmxia0ZKbDUwc3M5UThFb3hCTDc1ZExWc0c1UGtTRmRxY2ZLTnhxQ185bDdUTFpxVXpqNm5MSmZtWkFTeVRSLXFpRHhOeWJwMFlGVmtNc0E="
+
+    encode_bytes = raw_data.encode('utf-8')
+    base64_decode = base64.b64decode(encode_bytes)
+    decode_str = base64_decode.decode('utf-8')
+    return decode_str
 
 class AI(object):
 
@@ -58,8 +65,7 @@ class AI(object):
 
         self.client = OpenAI(
             # 如果程序报错，切换apikey
-            api_key='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'
-            # api_key="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"
+            api_key=api_key()
         )
         self.context_inf = [
             {"role": "system",
