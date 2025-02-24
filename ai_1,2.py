@@ -135,6 +135,8 @@ if __name__ == '__main__':
                 try:
                     a.context_main(u_decision=u_decision)
                 except:
-                    print('1.token达到速率限制，尝试更换token或等待半小时','2.检查网络是否正常')
+                    print('ctrl+c退出','\n报错:\n','1.token达到速率限制，尝试更换key或等待半小时','2.检查网络是否正常')
+                    break
+                input('-----------------------------ENTER------------------------------')
 
 
